@@ -1,0 +1,68 @@
+// --------------------------------------------------------------------------------------------------------------------
+// BREAKPOINTS & CLASSNAMES
+// --------------------------------------------------------------------------------------------------------------------
+$sm-devices: 0px;
+$md-devices: 576px;
+$lg-devices: 991px;
+
+$class-name-small: s !default;
+$class-name-medium: m !default;
+$class-name-large: l !default;
+
+// --------------------------------------------------------------------------------------------------------------------
+// DEFAULTS
+// --------------------------------------------------------------------------------------------------------------------
+.container {
+	display: block;
+	width: calc(100% - 60px);
+	margin: 30px auto 0;
+	padding: 10px;
+}
+
+.row {
+	display: inline-block;
+	width: 100%;
+}
+
+@mixin grid-defaults {
+	display: inline-block;
+	float: left;
+	padding: 5px 2.5px 5px 2.5px;
+
+	&:first-child {
+		padding-left: 5px;
+	}
+	&:last-child {
+		padding-right: 5px;
+	}
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// RESPONSIVE CLASSES
+// --------------------------------------------------------------------------------------------------------------------
+@media only screen and (min-width: $sm-devices) {
+	@for $i from 12 through 1 {
+		.#{$class-name-small}-#{$i} {
+			width: calc((100% / (12 / #{$i})) - #{$default-padding});
+			@include grid-defaults;
+		}
+	}
+}
+
+@media only screen and (min-width: $md-devices) {
+	@for $i from 12 through 1 {
+		.#{$class-name-medium}-#{$i} {
+			width: calc((100% / (12 / #{$i})) - #{$default-padding});
+			@include grid-defaults;
+		}
+	}
+}
+
+@media only screen and (min-width: $lg-devices) {
+	@for $i from 12 through 1 {
+		.#{$class-name-large}-#{$i} {
+			width: calc((100% / (12 / #{$i})) - #{$default-padding});
+			@include grid-defaults;
+		}
+	}
+}
